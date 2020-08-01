@@ -27,4 +27,12 @@ router.post('/delete/:id',(req, res) => {
   controllers.items.deleteItems(req,res);
 });
 
+router.get('/edit/:id',(req, res) => {
+  controllers.items.editItem(req,res);
+});
+
+router.post('/update/:id',(req, res) => {
+  controllers.items.updateItem(req,res);
+});
+
 module.exports = router;

@@ -26,3 +26,19 @@ exports.deleteItems = (req,res) =>{
         res.redirect('/items');
     })
 }
+
+exports.editItem = (req,res) =>{
+    db.Items.getThisItem(req.params.id)
+    .then((item) => {
+        res.render('edit',{
+            item: item[0]
+        })
+    })
+}
+
+exports.updateItem = (req,res) =>{
+    db.Items.updateItem(req.params.id, req.body.itemName)
+    .then(() => {
+        res.redirect('/items');
+    })
+}
