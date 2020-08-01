@@ -1,31 +1,52 @@
-# Node-Postgres-Docker [![Build Status](https://travis-ci.org/pabloegpf1/Node-Postgres-Docker.svg?branch=master)](https://travis-ci.org/pabloegpf1/Node-Postgres-Docker)
+# docker-psql-node-list-app
 
-This is a template for future projects based on Node.js with Express and Postgres. 
+このリポジトリは、Node.js、Express、Knex.js、PostgreSQLをつかって、
 
-The idea is to use docker-compose to create 2 microservices (Node server and Postgres db) and connect both, all in a single command. 
+プロゲートの[Node.jsコース](https://prog-8.com/languages/nodejs)をDocker環境で作ったものです。
 
-The volumes defined in the .yml file makes it possible to use nodemon to edit the code and see the chages in real time while the container is running. This is very useful during development.
+[dockder-compose ソース元](https://github.com/pabloegpf1/Node-Postgres-Docker)
 
-## How to run
+<br>
 
-1. Install [Docker](https://docs.docker.com/install/) and [Docker-Compose](https://docs.docker.com/compose/install/).
-2. Download or clone this repo.
-3. cd into /Node-Postgres-Docker
-4. Create a file and name it ".env" in the root directory
-5. Add enviroment variables inside .env file in this format (set the credentials as you wish):
+## はじめかた
+### 1. [Docker](https://docs.docker.com/install/) と [Docker-Compose](https://docs.docker.com/compose/install/) をインストール
 
+### 2. このリポジトリをダウンロードまたはクローン
+        git clone https://github.com/mako4kamiya/docker-psql-node-list-app.git
+### 3. リポジトリ内へ移動
+        cd docker-psql-node-list-app
+### 4. ルートディレクトリに.envファイルを作成
+        touch .env or vim .env
+### 5. 下記のように環境変数を設定する
         DB_NAME=postgres
         DB_USER=postgres
         DB_PW=postgres
-        DB_PORT=5432 // Optional - defaults to 5432
+        DB_PORT=5432
+### 6. 以下のコマンドを実行
+        docker-compose run web npm run migrate
+        docker-compose up -d
+### 7. サーバーを立ち上げる
+        npm start
+### 8. ブラウザにアクセス [http://localhost:3000](http://localhost:3000)
 
-6. run:
-```
-docker-compose run web npm run migrate
-```
-7. Type 'y' when asked to remove a container. This will run all the migrations and must be done only the first time. 
-Then:
-```
-docker-compose up -d
-```
-8. The app will run in port 3000
+<br>
+
+## その他
+### コンテナの確認
+`docker-compose ps`
+
+### コンテナの停止
+`docker-compose stop`
+
+### コンテナの破棄
+`docker-compose down`
+
+### webコンテナに入る
+`docker-compose exec web bash`
+
+### dbコンテナに入る
+`docker-compose exec db bash`
+
+dbコンテナに入ったあとにdbを確認するには
+
+`psql -U postgres`
