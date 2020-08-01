@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <title><%= title %></title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-
-<body>
-  <h1><%= title %></h1>
-  <h2>Created by <a href="https://github.com/pabloegpf1">Pablo Escriva</a>.</h2>
-  <p>Check out the source code, as well as information to use this template <a
-      href="https://github.com/pabloegpf1/Node-Postgres-Docker">here</a>.</p>
-  <h3>Test the database: <a href="/users">Run Query</a></h3>
-</body>
-
+  <head>
+    <meta charset="utf-8">
+    <title>LIST APP</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="/send_url.js"></script>
+  </head>
+  <body>
+    <header>
+      <a class="header-logo" href="/">LIST APP</a>
+    </header>
+    <div class="container">
+      <div class="container-header">
+        <h1>買い物リスト</h1>
+      </div>
+      <div class="index-table-wrapper">
+        <div class="table-head">
+          <span class="id-column">ID</span>
+          <span>買うもの</span>
+        </div>
+        <% const items = [
+          {id: 1, name: 'じゃがいも'},
+          {id: 2, name: 'にんじん'},
+          {id: 3, name: 'たまねぎ'}
+        ]; %>
+        <ul class="table-body">
+          <% items.forEach((item) => { %>
+            <li>
+              <span class="id-column">
+                <%= item.id %>
+                
+              </span>
+              <span class="name-column">
+                <%= item.name %>
+                
+              </span>
+            </li>
+          <% }); %>
+        </ul>
+      </div>
+    </div>
+  </body>
 </html>
