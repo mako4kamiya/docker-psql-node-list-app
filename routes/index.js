@@ -10,8 +10,16 @@ router.get('/', (req, res) => {
   res.render('top');
 });
 
+
 router.get('/items', (req, res) => {
   controllers.items.showItems(req,res);
-})
+});
+
+router.get('/new',(req, res) => {
+  controllers.items.newItems(req,res);
+});
+router.post('/create',(req, res) => {
+  controllers.items.createItems(req,res);
+});
 
 module.exports = router;

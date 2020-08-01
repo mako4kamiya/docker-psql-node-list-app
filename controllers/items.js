@@ -8,3 +8,14 @@ exports.showItems = (req,res) =>{
         })
     })
 }
+
+exports.newItems = (req,res) =>{
+    res.render('new.ejs')
+}
+
+exports.createItems = (req,res) =>{
+    db.Items.createItems(req.body.itemName)
+    .then(() => {
+        res.redirect('/items');
+    })
+}
