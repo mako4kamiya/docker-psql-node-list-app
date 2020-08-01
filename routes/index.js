@@ -18,8 +18,13 @@ router.get('/items', (req, res) => {
 router.get('/new',(req, res) => {
   controllers.items.newItems(req,res);
 });
+
 router.post('/create',(req, res) => {
   controllers.items.createItems(req,res);
+});
+
+router.post('/delete/:id',(req, res) => {
+  controllers.items.deleteItems(req,res);
 });
 
 module.exports = router;

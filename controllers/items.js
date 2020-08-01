@@ -19,3 +19,10 @@ exports.createItems = (req,res) =>{
         res.redirect('/items');
     })
 }
+
+exports.deleteItems = (req,res) =>{
+    db.Items.deleteItems(req.params.id)
+    .then(() => {
+        res.redirect('/items');
+    })
+}

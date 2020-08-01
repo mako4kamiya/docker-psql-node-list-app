@@ -211,7 +211,7 @@ header {
   border: 1px solid #f0f4f9;
   border-top: none;
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   align-items: center;
 }
 
